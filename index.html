@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worple Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+      
+        #generatedWord {
+            font-size: 52px;
+/*             font-weight: bold; */
+            color: red;
+        }
+      
+/*       button{
+        font-family: Times New Roman;
+      } */
+    </style>
+</head>
+<body>
+<center>
+    <div class="container">
+        <h1>Baby Name Generator</h1>
+        
+        <div class="word-display">
+            <span id="generatedWord"><span class="placeholder"></span></span>
+        </div>
+        <br>
+        <button id="generateBtn">Generate</button>
+    
+    </div>
+</center>
+    <script>
+        // Word beginnings
+        const beginnings = [
+            'Bun', 'Bin', 'Bor', 'Bo', 'Crun', 'Crom', 'Chrum', 'Chrom', 'Chun', 'Chrun', 'Chom', 'Chim', 
+            'Don', 'Dom', 'Dum', 'Dun', 'Eun', 'Ego', 'Fun', 'Fon', 'Fin', 'Grun','Grum','Grom','Gron','Gun', 'Gon', 
+            'Hon', 'Him', 'Hum', 'Jon', 'Jorp', 'Jurp', 'Jun', 'Jam', 'Jrum', 'Jrin', 
+            'Kun', 'Kon', 'Kan', 'Krum', 'Krin', 'Lum', 'Lom', 'Lim', 'Lurp', 'Lorp', 
+            'Lirp', 'Mum', 'Mom', 'Murm', 'Morp', 'Norp', 'Nurp', 'Nimp', 'Num', 'Nom', 
+            'Nim', 'Orp', 'Porp', 'Purp', 'Prump', 'Prorp', 'Prink', 'Prunk', 'Qorp', 
+            'Qurp', 'Rom', 'Rump', 'Rorp', 'Sorp', 'Sump', 'So', 'Su', 'Spung', 'Sprok', 
+            'Sprog', 'Spruk', 'Scrum', 'Schu', 'Tum', 'Tom', 'Tump', 'Torp', 'Turp', 
+            'Urp', 'Vorp', 'Vurp', 'Vump', 'Vomp', 'Wump', 'Wurp', 'Worp', 'Worm', 
+            'Xon', 'Xung', 'Yong', 'Yung', 'Yorp', 'Yump', 'Zomp', 'Zurm', 'Zorp'
+        ];
+        
+        // Word endings
+        const endings = ['le', 'lle', 'ple', 'pors', 'pus', 'lus', 'kle', 'klus', 'klomp', 'pler', 'omp', 'klump', 'ump'];
+
+        // Get DOM elements
+        const generateBtn = document.getElementById('generateBtn');
+        const generatedWord = document.getElementById('generatedWord');
+
+        // Generate a random word function
+        function generateRandomWord() {
+            const randomBeginning = beginnings[Math.floor(Math.random() * beginnings.length)];
+            const randomEnding = endings[Math.floor(Math.random() * endings.length)];
+            return randomBeginning + randomEnding;
+        }
+
+        // Add event listener to button
+        generateBtn.addEventListener('click', function() {
+            const newWord = generateRandomWord();
+            generatedWord.textContent = newWord;
+            
+            // Add a simple animation effect
+            generatedWord.style.opacity = '0';
+            setTimeout(() => {
+                generatedWord.style.opacity = '1';
+            }, 50);
+        });
+    </script>
+</body>
+</html>
